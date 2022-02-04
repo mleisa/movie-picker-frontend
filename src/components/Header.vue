@@ -2,33 +2,40 @@
   <v-card
       color="grey lighten-4">
     <v-app-bar dark app fixed>
-      <v-toolbar-title class="white--text">
-        Movie Picker
-      </v-toolbar-title>
+      <router-link to="/" style="text-decoration: none">
+        <v-toolbar-title class="white--text">
+          Movie Picker
+        </v-toolbar-title>
+      </router-link>
 
       <!--      <v-app-bar-nav-icon></v-app-bar-nav-icon>-->
       <!--      <v-btn class="ma-2" color="#7d39a7">Browse All</v-btn>-->
       <!--      <v-btn class="ma-2" color="#7d39a7">Pick A Movie</v-btn>-->
       <!--      <v-btn class="ma-2" color="#7d39a7">Add A Movie</v-btn>-->
-      <v-spacer></v-spacer>
+
       <v-menu bottom
               origin="center center"
               transition="scale-transition"
               open-on-hover
       >
         <template v-slot:activator="{ attrs, on }">
-          <v-btn dark v-bind="attrs" v-on="on">
+          <v-btn dark v-bind="attrs" v-on="on" elevation="0">
             <v-app-bar-nav-icon></v-app-bar-nav-icon>
           </v-btn>
         </template>
 
-        <v-list dark>
-          <v-list-item v-for="item in items" :key="item" link>
-            <v-list-item-title v-text="item"></v-list-item-title>
+        <v-list dark elevation="0">
+          <v-list-item v-for="item in items" :key="item.name" link>
+            <router-link :to="{path:item.path}" style="text-decoration: none">
+              <v-list-item-title v-text="item.name" class="white--text"></v-list-item-title>
+            </router-link>
           </v-list-item>
         </v-list>
 
       </v-menu>
+
+      <v-spacer></v-spacer>
+
 
 
       <v-text-field clearable class="flex-sm-shrink-0" label="Search"></v-text-field>
@@ -47,10 +54,11 @@ export default {
   data() {
     return {
       items: [
-        'Browse Movies',
-        'Services',
-        'About us',
-        'Contact Us'
+        {name: 'Browse Movies', path: '/movies'},
+        {name: 'Add Movies', path: '/addMovie'},
+        {name: 'Services', path: '/services'},
+        {name: 'About us', path: '/aboutUs'},
+        {name: 'Contact Us', path: '/contactUs'}
       ]
     }
   }

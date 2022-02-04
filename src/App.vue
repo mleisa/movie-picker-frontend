@@ -7,7 +7,6 @@
 </template>
 
 <script>
-//import HelloWorld from './components/HelloWorld';
 
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";

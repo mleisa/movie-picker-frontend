@@ -4,20 +4,16 @@
       padless
       fixed
   >
-    <v-row
-        justify="center"
-        no-gutters
-    >
-      <v-btn
-          v-for="link in links"
-          :key="link"
-          color="white"
-          text
-          rounded
-          class="my-2"
-      >
-        {{ link }}
-      </v-btn>
+    <v-row justify="center" no-gutters>
+      <router-link
+          v-for="item in items" :key="item.name"
+          style="text-decoration: none"
+          :to="{path:item.path}">
+        <v-btn color="white" text rounded class="my-2">
+          {{ item.name }}
+        </v-btn>
+      </router-link>
+
       <v-col
           class=" py-1 text-center white--text"
           cols="12"
@@ -32,11 +28,11 @@
 export default {
   name: "Footer",
   data: () => ({
-    links: [
-      'Home',
-      'Services',
-      'About us',
-      'Contact Us'
+    items: [
+      {name: "Home", path: "/"},
+      {name: "Browse", path: "/movies"},
+      {name: "FAQ", path: "/faq"},
+      {name: "About", path: "/about"},
     ]
   })
 }
