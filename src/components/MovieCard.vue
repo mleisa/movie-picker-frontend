@@ -8,7 +8,7 @@
       <p class="text-h6 text--primary">
         {{ movie.title }}
       </p>
-      <p>{{movie.genre}}</p>
+      <p>{{ movie.genre }}</p>
 
       <v-row align="center" class="mx-0">
         <v-rating
@@ -19,10 +19,11 @@
             half-increments
             readonly
             size="18"></v-rating>
-        <div class="grey--text ms-4">{{movie.rating}}</div>
-      </v-row><p>
+        <div class="grey--text ms-4">{{ movie.rating }}</div>
+      </v-row>
+      <p>
       <div class="text--primary">
-        {{movie.summary}}
+        {{ movie.summary }}
       </div>
     </v-card-text>
 
@@ -30,6 +31,13 @@
       <v-btn text color="teal accent-4" @click="reveal = true">
         Rate
       </v-btn>
+
+      <v-spacer/>
+
+      <v-btn icon small color="#C0191F" @click="deleteMovie(movie)">
+        <v-icon>mdi-delete</v-icon>
+      </v-btn>
+
     </v-card-actions>
 
     <v-expand-transition>
@@ -52,7 +60,7 @@
             half-increments
             hover
             size="30"
-            @input="reveal = false; addRating(movie, $event)"
+            @input="reveal = false; updateEntry(movie, $event)"
         ></v-rating>
 
         <v-card-actions class="pt-0 justify-lg-space-between">
@@ -60,7 +68,7 @@
           >Return
           </v-btn>
 
-<!--          <v-btn text color="teal accent-4" @click="reveal = false">Rate</v-btn>-->
+          <!--          <v-btn text color="teal accent-4" @click="reveal = false">Rate</v-btn>-->
 
         </v-card-actions>
       </v-card>
@@ -78,9 +86,19 @@ export default {
   data: () => ({
     reveal: false,
   }),
+
   methods: {
-    addRating(movie, value) {
+    updateEntry(movie, value) {
       MovieService.updateRating(movie, value)
+    },
+    deleteMovie(movie) {
+      if (window.confirm("You are about to delete " + movie.title + ". Are you sure?")) {
+        MovieService.deleteMovie(movie)
+        this.refreshPage()
+      }
+    },
+    refreshPage() {
+      window.location.reload()
     }
   }
 }

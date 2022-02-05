@@ -31,8 +31,8 @@ export default {
     items: [
       {name: "Home", path: "/"},
       {name: "Browse", path: "/movies"},
-      {name: "FAQ", path: "/faq"},
-      {name: "About", path: "/about"},
+      {name: "About Us", path: "/aboutUs"},
+      {name: 'Contact us', path: '/contactUs'},
     ]
   })
 }

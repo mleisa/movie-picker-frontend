@@ -1,13 +1,14 @@
 <template>
   <v-container fill-height class="picture" fluid>
-    <v-container grid-list fill-height class="area" :max-height="$vuetify.breakpoint.xs ? 300 : '20vh'">
+    <v-container>
+    <v-container grid-list fill-height class="area justify-start" :max-height="$vuetify.breakpoint.xs ? 300 : '20vh'">
 
-        <v-flex v-for="movie in movies" :key="movie.id" class="flexClass ma-5">
+        <div v-for="movie in movies" :key="movie.id" class="flexClass ma-5" >
           <MovieCard :movie="movie"/>
-        </v-flex>
+        </div>
 
     </v-container>
-
+    </v-container>
   </v-container>
 </template>
 

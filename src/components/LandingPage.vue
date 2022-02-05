@@ -15,7 +15,7 @@
 
 
 export default {
-  name: "Test",
+  name: "LandingPage",
   components: {},
   data() {
     return {
@@ -30,8 +30,6 @@ export default {
 .picture {
   background: url("../../pics/Living Room Free Stock Video.png") no-repeat center center fixed;
   background-size: cover;
-
-  //filter: brightness(0.5);
   position: static;
 }
 
