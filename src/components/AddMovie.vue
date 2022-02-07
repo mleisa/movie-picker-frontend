@@ -13,21 +13,22 @@
         </v-app-bar>
 
         <v-card-text>
-          <form ref="form">
+          <v-form ref="form">
             <v-text-field
                 v-model="name"
                 :rules="inputRules"
                 label="Movie Name"
                 required
-
+                clearable
             ></v-text-field>
-            <v-text-field
+
+            <v-textarea
                 v-model="summary"
                 :rules="inputRules"
                 label="Summary"
                 required
+            ></v-textarea>
 
-            ></v-text-field>
             <v-select
                 v-model="select"
                 :items="items"
@@ -35,8 +36,6 @@
                 label="Genre"
                 required
                 dark
-                @change="$v.select.$touch()"
-                @blur="$v.select.$touch()"
             ></v-select>
 
             <p class="text-md-h7 text-xl-h6 text-sm-h8 font-weight-regular">Rating
@@ -55,7 +54,7 @@
 
             <v-btn @click="clear">Clear</v-btn>
 
-          </form>
+          </v-form>
         </v-card-text>
       </v-card>
     </v-row>
@@ -86,7 +85,7 @@ export default {
     ratingValue: 0,
 
     inputRules: [
-      v => !!v && v.trim() !== "" || "This is required",
+      v => !!v && v.trim() !== "" || "This is required"
     ]
 
   }),
