@@ -90,27 +90,6 @@ export default {
 
   }),
 
-  // computed: {
-  //   selectErrors() {
-  //     const errors = []
-  //     if (!this.$v.select.$dirty) return errors
-  //     !this.$v.select.required && errors.push('Genre is required')
-  //     return errors
-  //   },
-  //   nameErrors() {
-  //     const errors = []
-  //     if (!this.$v.name.$dirty) return errors
-  //     !this.$v.name.required && errors.push('Name is required.')
-  //     return errors
-  //   },
-  //   summaryErrors() {
-  //     const errors = []
-  //     if (!this.$v.summary.$dirty) return errors
-  //     !this.$v.summary.required && errors.push('Summary is required')
-  //     return errors
-  //   }
-  // },
-
   methods: {
     async submit() {
       if (this.$refs.form.validate()) {
