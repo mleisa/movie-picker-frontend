@@ -200,7 +200,7 @@ export default {
     select: null,
 
     inputRules: [
-      v => !!v && v.trim() !== "" || "This is required",
+      v => !!v && v.trim() !== "" || "This is required"
     ]
   }),
 
