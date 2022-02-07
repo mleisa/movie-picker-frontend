@@ -61,7 +61,6 @@ export default {
         {name: 'Browse Movies', path: '/movies'},
         {name: 'Add Movies', path: '/addMovie'},
         {name: 'About Us', path: '/aboutUs'},
-        {name: 'Contact Us', path: '/contactUs'},
       ]
     }
   },

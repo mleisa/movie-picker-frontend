@@ -1,7 +1,7 @@
 <template>
   <v-container fill-height class="picture" fluid>
     <v-container>
-    <v-container grid-list fill-height class="area justify-start" :max-height="$vuetify.breakpoint.xs ? 300 : '20vh'">
+    <v-container grid-list fill-height class="area justify-start">
 
         <div v-for="movie in movies" :key="movie.id" class="flexClass ma-5" >
           <MovieCard :movie="movie"/>
@@ -43,9 +43,8 @@ export default {
   position: static;
 }
 .area {
-  max-width: 80%;
   max-height: 90%;
-  margin-bottom: 300px;
+  margin-bottom: 100px;
 }
 .flexClass {
   width: 300px;

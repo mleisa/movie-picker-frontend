@@ -3,6 +3,7 @@
       dark
       padless
       fixed
+      absolute
   >
     <v-row justify="center" no-gutters>
       <router-link
@@ -31,8 +32,8 @@ export default {
     items: [
       {name: "Home", path: "/"},
       {name: "Browse", path: "/movies"},
+      {name: "Add", path: "/addMovie"},
       {name: "About Us", path: "/aboutUs"},
-      {name: 'Contact us', path: '/contactUs'},
     ]
   })
 }

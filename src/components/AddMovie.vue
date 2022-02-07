@@ -13,17 +13,17 @@
         </v-app-bar>
 
         <v-card-text>
-          <form>
+          <form ref="form">
             <v-text-field
                 v-model="name"
-                :error-messages="nameErrors"
+                :rules="inputRules"
                 label="Movie Name"
                 required
 
             ></v-text-field>
             <v-text-field
                 v-model="summary"
-                :error-messages="emailErrors"
+                :rules="inputRules"
                 label="Summary"
                 required
 
@@ -31,9 +31,10 @@
             <v-select
                 v-model="select"
                 :items="items"
-                :error-messages="selectErrors"
+                :rules="inputRules"
                 label="Genre"
                 required
+                dark
                 @change="$v.select.$touch()"
                 @blur="$v.select.$touch()"
             ></v-select>
@@ -82,34 +83,38 @@ export default {
     summary: '',
     select: null,
     items: [],
-    ratingValue: 0
+    ratingValue: 0,
+
+    inputRules: [
+      v => !!v && v.trim() !== "" || "This is required",
+    ]
+
   }),
 
-  computed: {
-    selectErrors() {
-      const errors = []
-      if (!this.$v.select.$dirty) return errors
-      !this.$v.select.required && errors.push('Genre is required')
-      return errors
-    },
-    nameErrors() {
-      const errors = []
-      if (!this.$v.name.$dirty) return errors
-      !this.$v.name.required && errors.push('Name is required.')
-      return errors
-    },
-    emailErrors() {
-      const errors = []
-      if (!this.$v.summary.$dirty) return errors
-      !this.$v.summary.required && errors.push('Summary is required')
-      return errors
-    }
-  },
+  // computed: {
+  //   selectErrors() {
+  //     const errors = []
+  //     if (!this.$v.select.$dirty) return errors
+  //     !this.$v.select.required && errors.push('Genre is required')
+  //     return errors
+  //   },
+  //   nameErrors() {
+  //     const errors = []
+  //     if (!this.$v.name.$dirty) return errors
+  //     !this.$v.name.required && errors.push('Name is required.')
+  //     return errors
+  //   },
+  //   summaryErrors() {
+  //     const errors = []
+  //     if (!this.$v.summary.$dirty) return errors
+  //     !this.$v.summary.required && errors.push('Summary is required')
+  //     return errors
+  //   }
+  // },
 
   methods: {
     async submit() {
-      this.$v.$touch()
-      if(this.select !== null) {
+      if (this.$refs.form.validate()) {
 
         await this.addMovie(this.name, this.summary, this.select, this.ratingValue)
 
