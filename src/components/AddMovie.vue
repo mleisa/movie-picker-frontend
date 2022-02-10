@@ -104,7 +104,6 @@ export default {
       this.name = ''
       this.summary = ''
       this.select = null
-
     },
     getGenres() {
       MovieService.getGenres().then((response) => {
